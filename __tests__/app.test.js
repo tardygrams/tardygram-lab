@@ -10,7 +10,7 @@ describe('tardygram-app routes', () => {
     return pool.query(fs.readFileSync('./sql/setup.sql', 'utf-8'));
   });
 
-  it('allows a user to sign up via POST', async () => {
+  it('allows a user to sign up via POST', async() => {
     return request(app)
       .post('/api/v1/auth/signup')
       .send({
@@ -25,7 +25,7 @@ describe('tardygram-app routes', () => {
       });
   });
 
-  it('allows a user to login via POST', async () => {
+  it('allows a user to login via POST', async() => {
     const user = await UserService.create({
       email: 'test@test.com',
       password: 'password'
@@ -44,7 +44,7 @@ describe('tardygram-app routes', () => {
     });
   });
 
-  it('verifies a user is logged-in via GET', async () => {
+  it('verifies a user is logged-in via GET', async() => {
     const agent = request.agent(app);
     const user = await UserService.create({
       email: 'test@test.com',
