@@ -21,6 +21,26 @@ describe('tardygram-app routes', () => {
           password: 'password'
         });
       });
-  }
-  );
+  });
+
+  it('allows a user to login via POST', async() => {
+    const user = await UserService.create({
+      email: 'test@test.com',
+      password: 'password'
+    });
+
+    const res = await request(app)
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'test@test.com',
+        password: 'password'
+      });
+
+    expect(res.body).toEqual({
+      id: user.id,
+      email: 'test@test.com',
+      password: 'password'
+    });
+  });
+
 });
