@@ -3,11 +3,11 @@ Tardygram (Instagram clone)
 Let’s create an Instagram clone.
 
 ## Models
-### User
+<!-- ### User
 Users can post new posts and leave comments. They have:
 - A String username
-- A String password_hash 
-- A String profile_photo_url
+<!-- - A String password_hash  -->
+<!-- - A String profile_photo_url --> -->
 
 ### Post/Gram
 Posts are photos with some text caption. They should have:
@@ -22,7 +22,7 @@ Comments have:
 - A reference to a post post
 - A string comment
 
-## Routes
+<!-- ## Routes
 ### Auth
 Create authentication routes
 - POST /auth/signup
@@ -34,7 +34,7 @@ Create authentication routes
 
 - GET /auth/verify
   - uses the ensureAuth middleware
-  - responds with a user
+  - responds with a user -->
 
 ### Posts/Grams
 Create RESTful post routes
