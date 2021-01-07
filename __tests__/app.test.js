@@ -3,6 +3,7 @@ const pool = require('../lib/utils/pool');
 const request = require('supertest');
 const app = require('../lib/app');
 const { globalAgent } = require('https');
+const UserService = require('../lib/services/UserService');
 
 
 describe('tardygram-app routes', () => {
