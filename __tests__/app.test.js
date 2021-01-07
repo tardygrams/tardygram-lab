@@ -42,7 +42,7 @@ describe('tardygram-app routes', () => {
       .send({
         email: 'test@test.com',
         password: '1234',
-        username: 'finnley',
+        username: 'finnley'
       });
 
     expect(res.body).toEqual({
@@ -57,7 +57,8 @@ describe('tardygram-app routes', () => {
     const user = await UserService.create({
       email: 'test@test.com',
       password: '1234',
-      username: 'finnley'
+      username: 'finnley',
+      profilePhotoURL: 'https://myphotos/finnley'
     });
 
     await agent
