@@ -3,7 +3,7 @@ Tardygram (Instagram clone)
 Let’s create an Instagram clone.
 
 ## Models
-~~ ### User
+### User
 Users can post new posts and leave comments. They have:
 - A String username
 - A String password_hash  -->
