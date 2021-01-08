@@ -11,7 +11,7 @@ describe('tardygram-app routes', () => {
     return pool.query(fs.readFileSync('./sql/setup.sql', 'utf-8'));
   });
 
-  it('allows a user to sign up via POST', async () => {
+  it('allows a user to sign up via POST', async() => {
     return request(app)
       .post('/api/v1/auth/signup')
       .send({
@@ -29,7 +29,7 @@ describe('tardygram-app routes', () => {
       });
   });
 
-  it('allows a user to login via POST', async () => {
+  it('allows a user to login via POST', async() => {
     const user = await UserService.create({
       email: 'test@test.com',
       password: '1234',
@@ -52,7 +52,7 @@ describe('tardygram-app routes', () => {
     });
   });
 
-  it('verifies a user is logged-in via GET', async () => {
+  it('verifies a user is logged-in via GET', async() => {
     const agent = request.agent(app);
     const user = await UserService.create({
       email: 'test@test.com',
@@ -79,4 +79,24 @@ describe('tardygram-app routes', () => {
     });
   });
 
+
+  // what if there is no comment? NULL?
+  it('responds with a list of the 10 posts with most comments via GET', async() => {
+    await pool.query(fs.readFileSync('sql/populate-comments.sql', 'utf-8'));
+    const res = request(app)
+      .get('/top-posts');
+    expect(res.body).toEqual([
+      { id: 1, photo_url: 'someurl.url', caption:'some caption', tags: '#sometag', user_id: 1, count: 10 },
+      { id: 2, photo_url: 'someurl.url', caption:'some caption', tags: '#sometag', user_id: 1, count: 2 },
+      { id: 3, photo_url: 'someurl.url', caption:'some caption', tags: '#sometag', user_id: 1, count: 2 },
+      { id: 5, photo_url: 'someurl.url', caption:'some caption', tags: '#sometag', user_id: 1, count: 2 },
+      { id: 6, photo_url: 'someurl.url', caption:'some caption', tags: '#sometag', user_id: 1, count: 2 },
+      { id: 4, photo_url: 'someurl.url', caption:'some caption', tags: '#sometag', user_id: 1, count: 2 },
+      { id: 7, photo_url: 'someurl.url', caption:'some caption', tags: '#sometag', user_id: 1, count: 2 },
+      { id: 8, photo_url: 'someurl.url', caption:'some caption', tags: '#sometag', user_id: 1, count: 2 },
+      { id: 9, photo_url: 'someurl.url', caption:'some caption', tags: '#sometag', user_id: 1, count: 2 },
+      { id: 10, photo_url: 'someurl.url', caption:'some caption', tags: '#sometag', user_id: 1, count: 2 }
+
+    ]);
+  });
 });
