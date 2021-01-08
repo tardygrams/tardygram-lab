@@ -2,14 +2,14 @@
 Tardygram (Instagram clone)
 Let’s create an Instagram clone.
 
-## Models
+<!-- ## Models
 ### User
 Users can post new posts and leave comments. They have:
 - A String username
 - A String password_hash  -->
 - A String profile_photo_url --> --> ~~
 
-### Post/Gram
+<!-- ### Post/Gram
 Posts are photos with some text caption. They should have:
 - A reference to user user
 - A String photo_url
@@ -20,10 +20,10 @@ Posts are photos with some text caption. They should have:
 Comments have:
 - A reference to a user comment_by
 - A reference to a post post
-- A string comment
+- A string comment --> -->
 
 ~~ ## Routes
-### Auth
+<!-- ### Auth
 Create authentication routes
 - POST /auth/signup
   - creates a new user
@@ -34,12 +34,12 @@ Create authentication routes
 
 - GET /auth/verify
   - uses the ensureAuth middleware
-  - responds with a user ~~
+  - responds with a user ~~ -->
 
 ### Posts/Grams
 Create RESTful post routes
 
-- POST /posts
+<!-- - POST /posts
   - requires authentication
   - creates a new post
   - responds with the new post
@@ -51,9 +51,9 @@ HINT: get the user who created the post from req.user.
 - GET /posts/:id
   - responds with a post by id
   - should include the joined user
-  - should include all comments associated with the post (joined with commenter)
+  - should include all comments associated with the post (joined with commenter) -->
 
-- PATCH /posts/:id
+<!-- - PATCH /posts/:id
   - requires authentication
   - only can update the post caption
   - respond with the updated post
@@ -63,7 +63,7 @@ NOTE: make sure the user attempting to update the post owns it
   - requires authentication
   - deletes a post
   - responds with the deleted post
-NOTE: make sure the user attempting to delete the post owns it
+NOTE: make sure the user attempting to delete the post owns it -->
 
 - GET /posts/popular
   - respond with a list of the 10 posts with the most comments
