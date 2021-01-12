@@ -4,6 +4,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 const UserService = require('../lib/services/UserService');
 const Post = require('../lib/models/Post');
+const Comment = require('../lib/models/Comment');
 
 
 describe('tardygram-app routes', () => {
@@ -190,8 +191,41 @@ describe('tardygram-app routes', () => {
     });
   });
 
-  it('deletes a post via DELETE', async () => {
+  it('deletes a post via DELETE', async() => {
 
+    const post = await Post.insert({
+      userId: 3, 
+      photoUrl: 'photourl', 
+      caption: 'great photo', 
+      tags: { "tags": "#tag" } 
+    });
+
+    const res = await agent
+      .delete(`/api/v1/auth/posts/${post.id}`);
+
+    expect(res.body).toEqual(post);
+
+  });
+
+  it('deletes a comment via DELETE', async() => {
+
+    const post = await Post.insert({
+      userId: 3, 
+      photoUrl: 'photourl', 
+      caption: 'great photo', 
+      tags: { "tags": "#tag" } 
+    });
+
+    const comment = await Comment.insert({
+      commentBy: 3,
+      postId: post.id,
+      comment: 'I\'m done with this lab!'
+    });
+
+    const res = await agent
+      .delete(`/api/v1/auth/comments/${comment.id}`);
+
+    expect(res.body).toEqual(comment);
 
   });
 });
