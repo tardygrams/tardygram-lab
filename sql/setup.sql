@@ -22,7 +22,7 @@ CREATE TABLE posts(
 CREATE TABLE comments(
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     comment_by BIGINT REFERENCES users(id) NOT NULL,
-    post_id BIGINT REFERENCES posts(id) NOT NULL,
+    post_id BIGINT REFERENCES posts(id) ON DELETE CASCADE,
     comment VARCHAR(140)
 )
 
